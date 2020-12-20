@@ -1,0 +1,32 @@
+<div class="container margin-top">
+    <div class="row">
+    <div class="col-8">
+      <h1 class="title-admin">Gestion des rubriques</h1>
+    </div>
+    <div class="col-4">
+      <%= link_to 'Ajouter une rubrique', new_tag_path, class:'btn btn-primary btn-right' %>
+    </div>
+  </div>
+  <hr>
+    <% @tags.each do |t| %>
+      <div class="row admin-row">
+        <div class="col">
+         <b><%= t.title %></b>
+        </div>
+        <div class="col-6">
+          <%= t.description %>
+        </div>
+      <div class="col-2">
+        <%= link_to edit_tag_path(t.id), title:"Modifier", class: "btn btn-primary" do %>
+          Modifier
+        <% end %>
+      </div>
+      <div class="col-1">
+              <%= button_to "Supprimer", tag_path(t.id),
+                  method: :delete,
+                  data: { confirm: "Veuillez confirmer la suppression !" },
+                 :id => "delete", class:"btn btn-danger" %>
+      </div>
+      </div>
+    <% end %>
+</div>
