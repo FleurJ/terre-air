@@ -13,6 +13,7 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     @tag.save
+    redirect_to tags_path
   end
 
   def edit
