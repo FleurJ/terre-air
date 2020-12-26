@@ -62,3 +62,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise-i18n', '~> 1.2'
+gem 'cloudinary', '~> 1.16.0'

@@ -8,6 +8,8 @@
   <%= c.input :teaser, label: 'Chapeau - Teaser' %>
   <%= c.label :corps_de_texte %>
   <%= c.rich_text_area :body, label: 'Corps de texte' %>
+  <%= c.input :img_header, as: :file, label: "Image pour l'entête de page"  %>
+  <%= c.input :img_thumbnail, as: :file, label: 'Image miniature'  %>
   <%= c.input :status, label: 'Statut', collection: ['draft', 'published', 'archived'], default:'published' %>
 
   <%= c.submit "Créer", class:"btn btn-primary" %>
