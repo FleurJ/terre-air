@@ -1,4 +1,4 @@
 class ContentTag < ApplicationRecord
-  belongs_to :tags
-  belongs_to :contents
+  belongs_to :tag
+  belongs_to :content
 end

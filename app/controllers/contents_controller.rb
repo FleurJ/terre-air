@@ -2,6 +2,7 @@ require 'pry-byebug'
 class ContentsController < ApplicationController
   before_action :find_content, only: [:update, :edit, :destroy]
   before_action :authorised_user, only: [:new, :create, :update, :edit, :destroy]
+  before_action :find_tags, only: [:new, :edit]
 
   def show
     @content = Content.find(params[:id])
@@ -9,7 +10,6 @@ class ContentsController < ApplicationController
 
   def new
     @content = Content.new
-    @tags = Tag.all
   end
 
   def create
@@ -20,11 +20,10 @@ class ContentsController < ApplicationController
   end
 
   def edit
-    @tags = Tag.all
   end
 
   def update
-    @content.update(content_params)
+    @content.update!(content_params)
     redirect_to content_path(@content)
   end
 
@@ -40,7 +39,7 @@ class ContentsController < ApplicationController
   private
 
   def content_params
-    params.require(:content).permit(:title, :status, :teaser, :body, :links, :img_header, :img_thumbnail, tag_ids: [])
+    params.require(:content).permit(:title, :status, :teaser, :body, :links, :img_header, :img_thumbnail, tags_id: [])
   end
 
   def authorised_user
@@ -49,5 +48,9 @@ class ContentsController < ApplicationController
 
   def find_content
     @content = Content.find(params[:id])
+  end
+
+  def find_tags
+    @tags = Tag.all
   end
 end

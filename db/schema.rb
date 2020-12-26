@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_26_111007) do
+ActiveRecord::Schema.define(version: 2020_12_26_144459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,12 +47,12 @@ ActiveRecord::Schema.define(version: 2020_12_26_111007) do
   end
 
   create_table "content_tags", force: :cascade do |t|
-    t.bigint "tags_id", null: false
-    t.bigint "contents_id", null: false
+    t.bigint "tag_id", null: false
+    t.bigint "content_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["contents_id"], name: "index_content_tags_on_contents_id"
-    t.index ["tags_id"], name: "index_content_tags_on_tags_id"
+    t.index ["content_id"], name: "index_content_tags_on_content_id"
+    t.index ["tag_id"], name: "index_content_tags_on_tag_id"
   end
 
   create_table "contents", force: :cascade do |t|
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2020_12_26_111007) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "content_tags", "contents", column: "contents_id"
-  add_foreign_key "content_tags", "tags", column: "tags_id"
+  add_foreign_key "content_tags", "contents"
+  add_foreign_key "content_tags", "tags"
   add_foreign_key "contents", "users"
 end
