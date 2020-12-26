@@ -13,10 +13,20 @@
 <hr>
   <% if user_signed_in? %>
     <% if current_user.admin == true %>
+    <div class="row">
+      <div class="col-8">
+       <p>Créé le <%= @content.created_at %>, par <%= @content.user.first_name %> - Modifié le <%= @content.updated_at %></p>
+      </div>
+      <div class="col-2">
       <%= button_to "Supprimer", content_path(@content),
                   method: :delete,
                   data: { confirm: "Veuillez confirmer la suppression !" },
                  :id => "delete", class:"btn btn-danger" %>
+      </div>
+      <div class="col-2">
+        <%= button_to "Modifier", edit_content_path(@content.id), class:"btn btn-primary" %>
+      </div>
+    </div>
     <% end %>
   <% end %>
 </div>

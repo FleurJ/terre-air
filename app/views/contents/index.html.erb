@@ -24,9 +24,7 @@
 
         </div>
       <div class="col-1">
-        <%= link_to edit_content_path(c.id), title:"Modifier" do %>
-          <i class="fas fa-edit fa-fw"></i>
-        <% end %>
+        <%= button_to "Modifier", edit_content_path(c.id), class:"btn btn-primary" %>
       </div>
       <div class="col-1">
               <%= button_to "Supprimer", content_path(c.id),
