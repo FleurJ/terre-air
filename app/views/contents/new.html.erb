@@ -1,0 +1,15 @@
+<div class="container margin-top">
+  <h1>Créer un nouveau contenu</h1>
+  <hr>
+  <%= simple_form_for @content, url: contents_path do |c| %>
+  <%= c.association :tags, collection: @tags, as: :check_boxes, input_html: { multiple: true}, label: 'Rubrique(s)' %>
+  <%= c.input :title, label: 'Titre' %>
+  <%= c.input :links, label: 'Liens' %>
+  <%= c.input :teaser, label: 'Chapeau - Teaser' %>
+  <%= c.label :corps_de_texte %>
+  <%= c.rich_text_area :body, label: 'Corps de texte' %>
+  <%= c.input :status, label: 'Statut', collection: ['draft', 'published', 'archived'], default:'published' %>
+
+  <%= c.submit "Créer", class:"btn btn-primary" %>
+  <% end %>
+</div>

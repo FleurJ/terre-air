@@ -1,3 +1,4 @@
 class Tag < ApplicationRecord
-  has_rich_text :rich_body
+  has_many :content_tags, dependent: :destroy
+  has_many :contents, through: :content_tags
 end
