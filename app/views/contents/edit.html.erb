@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Modifier : <i><%= @content.title %></i></h1>
+  <hr>
+  <%= simple_form_for @content, url: content_path, method: :patch do |c| %>
+  <%= c.input :title, label: 'Titre' %>
+  <%= c.input :links, label: 'Liens' %>
+
+  <%= c.rich_text_area :teaser, label: 'Chapeau' %>
+  <%= c.rich_text_area :body, label: 'Corps de texte' %>
+  <%= c.input :status, label: 'Statut', collection: ['draft', 'published', 'archived'], default:'published' %>
+
+    <%= c.submit "Modifier" %>
+  <% end %>
+</div>
+<script src="application.js"></script>

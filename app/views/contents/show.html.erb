@@ -1,0 +1,24 @@
+<div class="container-content-title">
+
+ <div class="container content-title">
+  <h1 class="content-title"><%= @content.title %></h1>
+ </div>
+</div>
+
+<div class="container">
+  <p><%= @content.status %></p>
+  <p class="teaser"><%= @content.teaser %></p>
+  <p><%= @content.body %></p>
+  <p><%= @content.links %></p>
+<hr>
+  <% if user_signed_in? %>
+    <% if current_user.admin == true %>
+      <%= button_to "Supprimer", content_path(@content),
+                  method: :delete,
+                  data: { confirm: "Veuillez confirmer la suppression !" },
+                 :id => "delete", class:"btn btn-danger" %>
+    <% end %>
+  <% end %>
+</div>
+
+

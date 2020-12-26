@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h1>Gestion des contenus</h1>
+    </div>
+    <div class="col-4">
+      <%= link_to 'Ajouter un contenu', new_content_path, class:'btn btn-primary btn-right' %>
+    </div>
+  </div>
+  <hr>
+
+    <% @contents.each do |c| %>
+      <div class="row">
+        <div class="col-2">
+          <small><%= c.created_at.strftime("%d.%m.%Y") %></small>
+        </div>
+        <div class="col-4">
+          <%= link_to c.title, content_path(c.id) %>
+        </div>
+        <div class="col-2">
+          <%= c.status %>
+        </div>
+        <div class="col-2">
+
+        </div>
+      <div class="col-1">
+        <%= link_to edit_content_path(c.id), title:"Modifier" do %>
+          <i class="fas fa-edit fa-fw"></i>
+        <% end %>
+      </div>
+      <div class="col-1">
+              <%= button_to "Supprimer", content_path(c.id),
+                  method: :delete,
+                  data: { confirm: "Veuillez confirmer la suppression !" },
+                 :id => "delete", class:"btn btn-danger" %>
+      </div>
+      </div>
+    <% end %>
+</div>
