@@ -1,3 +1,4 @@
+require 'pry-byebug'
 class ContentsController < ApplicationController
   before_action :find_content, only: [:update, :edit, :destroy]
   before_action :authorised_user, only: [:new, :create, :update, :edit, :destroy]
@@ -13,6 +14,7 @@ class ContentsController < ApplicationController
 
   def create
     @content = Content.new(content_params)
+    @content.user = current_user
     @content.save
     redirect_to content_path(@content)
   end
