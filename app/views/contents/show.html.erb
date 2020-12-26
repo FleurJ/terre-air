@@ -1,11 +1,8 @@
-<div class="container-content-title">
-
- <div class="container content-title">
-  <h1 class="content-title"><%= @content.title %></h1>
- </div>
-</div>
-
 <div class="container">
+  <h1 class="content-title"><%= @content.title %></h1>
+
+  <p><%= cl_image_tag @content.img_header.key %></p>
+
   <p><%= @content.status %></p>
   <p class="teaser"><%= @content.teaser %></p>
   <p><%= @content.body %></p>
