@@ -1,5 +1,5 @@
 {
-  "name": "terreatair",
+  "name": "new",
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
@@ -17,7 +17,4 @@
   "devDependencies": {
     "webpack-dev-server": "^3.11.0"
   }
-}
-"scripts": {
-   "start": "node index.js"
 }
